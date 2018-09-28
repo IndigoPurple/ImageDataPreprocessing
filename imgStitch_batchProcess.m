@@ -51,13 +51,13 @@ end
 % process frames
 sequence = [0, 350, 700, 1100, 1300, 1650, 2000, 2250, 2600, 2800, 2950, 3050, 3250, 3500, 4250, 4600, 5000, 5550, 5800, 6100, 6400, 7000, 7350, 8250, 8750];
 ind = 0;
+% read image
+imgs = cell(refnum + localnum, 1);
+for i = 1:(refnum + localnum)
+    imgs{i} = readFrame(readers{i});
+end 
 % while hasFrame(readers{1})
 while ind <= 8750
-    % read image
-    imgs = cell(refnum + localnum, 1);
-    for i = 1:(refnum + localnum)
-        imgs{i} = readFrame(readers{i});
-    end 
     if ismember(ind, sequence)
         % resize image
         for i = 1:(refnum + localnum)
